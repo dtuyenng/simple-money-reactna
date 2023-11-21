@@ -1,21 +1,43 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 interface Props {
   itemName: string;
   itemCost: string;
   purchaseDate: string;
+  onPress: any;
+  renderRightActions: any;
 }
 
-function ListItem({ itemName, itemCost, purchaseDate }: Props) {
+function ListItem({
+  itemName,
+  itemCost,
+  purchaseDate,
+  onPress,
+  renderRightActions,
+}: Props) {
   return (
-    <View style={styles.itemContainer}>
-      <View style={styles.innerContainer}>
-        <Text>{itemName}</Text>
-        <Text>{itemCost}</Text>
-      </View>
+    <GestureHandlerRootView>
+      <Swipeable renderRightActions={renderRightActions}>
+        <TouchableOpacity onPress={onPress}>
+          <View style={styles.itemContainer}>
+            <View style={styles.innerContainer}>
+              <Text>{itemName}</Text>
+              <Text>{itemCost}</Text>
+            </View>
 
-      <Text style={styles.purchaseDate}>{purchaseDate}</Text>
-    </View>
+            <Text style={styles.purchaseDate}>{purchaseDate}</Text>
+          </View>
+        </TouchableOpacity>
+      </Swipeable>
+    </GestureHandlerRootView>
   );
 }
 

@@ -23,6 +23,12 @@ function PurchasedItemView({ purchasedItems }: Props) {
             itemName={item.itemName}
             itemCost={item.itemCost}
             purchaseDate={item.purchaseDate}
+            onPress={() => item}
+            renderRightActions={() => (
+              <View style={{ backgroundColor: "red", width: 40, height: 40 }}>
+                <Text>Remove Item</Text>
+              </View>
+            )}
           ></ListItem>
         )}
       ></FlatList>
