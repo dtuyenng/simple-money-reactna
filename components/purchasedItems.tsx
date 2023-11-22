@@ -46,6 +46,36 @@ const purchasedItems: {
     itemCost: "$4.99",
     purchaseDate: "12/01/1981",
   },
+  // {
+  //   id: 8,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
+  // {
+  //   id: 9,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
+  // {
+  //   id: 10,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
+  // {
+  //   id: 11,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
+  // {
+  //   id: 12,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
 ];
 
 export default purchasedItems;

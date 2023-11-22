@@ -27,7 +27,7 @@ function PurchasedItemView({ purchasedItems }: Props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Items Purchased</Text>
+      <Text style={styles.title}>Items ({items.length}) Purchased: </Text>
 
       <FlatList
         data={items}
@@ -51,7 +51,8 @@ function PurchasedItemView({ purchasedItems }: Props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    borderRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     width: 335,
     marginTop: 10,
     flex: 1,
@@ -59,9 +60,10 @@ const styles = StyleSheet.create({
     shadowColor: "black",
   },
   title: {
-    fontSize: 20,
+    fontSize: 15,
     marginLeft: 10,
     marginTop: 10,
+    marginBottom: 10,
     fontWeight: "bold",
   },
 });
