@@ -51,8 +51,9 @@ function PurchasedItemView({ purchasedItems }: Props) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    // borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
+    borderRadius: 20,
     width: 335,
     marginTop: 10,
     flex: 1,

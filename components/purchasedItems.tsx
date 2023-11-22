@@ -40,12 +40,12 @@ const purchasedItems: {
     itemCost: "$2.99",
     purchaseDate: "12/01/1981",
   },
-  {
-    id: 7,
-    itemName: "Eggs",
-    itemCost: "$4.99",
-    purchaseDate: "12/01/1981",
-  },
+  // {
+  //   id: 7,
+  //   itemName: "Eggs",
+  //   itemCost: "$4.99",
+  //   purchaseDate: "12/01/1981",
+  // },
   // {
   //   id: 8,
   //   itemName: "Eggs",

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     shadowColor: "black",
     shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
   },
   buttonIcon: {
     color: "orange",
