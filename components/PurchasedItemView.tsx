@@ -58,6 +58,8 @@ const styles = StyleSheet.create({
     flex: 1,
     elevation: 10,
     shadowColor: "black",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.5,
   },
   title: {
     fontSize: 15,

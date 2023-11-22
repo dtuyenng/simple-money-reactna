@@ -10,10 +10,10 @@ function BudgetStatusView() {
         />
       </View>
       <View style={styles.budgetDetails}>
-        <Text>Budget Status</Text>
-        <Text>$759.23</Text>
-        <Text>$1029.00 Available</Text>
-        <Text>$2000 Limit</Text>
+        <Text style={styles.budgetStatus}>Budget Status</Text>
+        <Text style={styles.budgetSpent}>$759.23</Text>
+        <Text style={styles.budgetAvailable}>$1029.00 Available</Text>
+        <Text style={styles.budgetLimit}>$2000 Limit</Text>
       </View>
     </View>
   );
@@ -22,16 +22,35 @@ function BudgetStatusView() {
 const styles = StyleSheet.create({
   container: {
     height: 100,
-    width: 100,
+    width: 200,
     backgroundColor: "white",
     borderRadius: 20,
     flexDirection: "row",
-    flex: 0.8,
+    flex: 1,
     elevation: 10,
     shadowColor: "black",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.5,
   },
+  budgetStatus: {
+    color: "dodgerblue",
+    fontWeight: "bold",
+  },
+  budgetSpent: {
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  budgetAvailable: {
+    color: "green",
+  },
+  budgetLimit: {
+    color: "dodgerblue",
+  },
+
   budgetDetails: {
+    paddingTop: 10,
     flexDirection: "column",
+    alignItems: "flex-end",
   },
   budgetIcon: {
     margin: 10,
