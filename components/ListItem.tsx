@@ -29,10 +29,9 @@ function ListItem({
         <TouchableOpacity onPress={onPress}>
           <View style={styles.itemContainer}>
             <View style={styles.innerContainer}>
-              <Text>{itemName}</Text>
-              <Text>{itemCost}</Text>
+              <Text style={styles.itemName}>{itemName}</Text>
+              <Text style={styles.itemCost}>{itemCost}</Text>
             </View>
-
             <Text style={styles.purchaseDate}>{purchaseDate}</Text>
           </View>
         </TouchableOpacity>
@@ -43,12 +42,14 @@ function ListItem({
 
 const styles = StyleSheet.create({
   itemContainer: {
-    backgroundColor: "dodgerblue",
     width: 300,
-    margin: 5,
+    marginLeft: 20,
+    paddingRight: 10,
     padding: 5,
     borderRadius: 10,
     flexDirection: "column",
+    borderTopWidth: 2,
+    borderTopColor: "#eeeeee",
   },
   innerContainer: {
     flexDirection: "row",
@@ -56,6 +57,13 @@ const styles = StyleSheet.create({
   },
   purchaseDate: {
     marginLeft: 5,
+  },
+  itemName: {
+    fontWeight: "bold",
+    color: "dodgerblue",
+  },
+  itemCost: {
+    fontWeight: "bold",
   },
 });
 

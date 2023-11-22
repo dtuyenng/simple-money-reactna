@@ -24,17 +24,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#eeeeee",
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 35,
   },
   header: {
-    backgroundColor: "red",
+    //backgroundColor: "red",
     flex: 0.2,
     flexDirection: "row",
   },
   content: {
-    backgroundColor: "yellow",
-    flex: 0.8,
+    //backgroundColor: "yellow",
+    flex: 0.9,
   },
 });

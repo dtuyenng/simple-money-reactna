@@ -12,8 +12,12 @@ const styles = StyleSheet.create({
   container: {
     height: 100,
     width: 100,
-    backgroundColor: "blue",
-    flexDirection: "row"
+    borderRadius: 20,
+    backgroundColor: "white",
+    flexDirection: "row",
+    elevation: 10,
+    shadowColor: "black",
+    marginLeft: 10,
   },
 });
 
