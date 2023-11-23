@@ -4,6 +4,7 @@ import DeleteItemButton from "./DeleteItemButton";
 import { useState } from "react";
 
 interface Props {
+  onPress: (item: any) => void;
   purchasedItems: {
     id: number;
     itemName: string;
@@ -12,25 +13,15 @@ interface Props {
   }[];
 }
 
-function PurchasedItemView({ purchasedItems }: Props) {
-  const [items, setItems] = useState(purchasedItems);
-
-  function handleDeleteItem(item: any) {
-    // purchasedItems = purchasedItems.filter((value) => value.id !== item.id); ERRROOOR use items not purchaseditems
-    // const newItems = purchasedItems;
-    // console.log(purchasedItems);
-    // console.log(newItems);
-    // setItems(newItems);
-    const newItems = items.filter((value) => value.id !== item.id);
-    setItems(newItems);
-  }
-
+function PurchasedItemView({ purchasedItems, onPress }: Props) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Items ({items.length}) Purchased: </Text>
+      <Text style={styles.title}>
+        Items ({purchasedItems.length}) Purchased:{" "}
+      </Text>
 
       <FlatList
-        data={items}
+        data={purchasedItems}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <ListItem
@@ -39,7 +30,7 @@ function PurchasedItemView({ purchasedItems }: Props) {
             purchaseDate={item.purchaseDate}
             onPress={() => item}
             renderRightActions={() => (
-              <DeleteItemButton onPress={() => handleDeleteItem(item)} />
+              <DeleteItemButton onPress={() => onPress(item)} />
             )}
           ></ListItem>
         )}

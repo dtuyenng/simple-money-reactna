@@ -2,12 +2,27 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import ListItem from "./components/ListItem";
 import PurchasedItemView from "./components/PurchasedItemView";
-import purchasedItems from "./components/purchasedItems";
-
 import BudgetStatusView from "./components/BudgetStatusView";
 import AddItemButton from "./components/AddItemButton";
 
+//main data import
+import purchasedItems from "./components/purchasedItems";
+import { useState } from "react";
+
 export default function App() {
+  const [items, setItems] = useState(purchasedItems);
+
+  function handleDeleteItem(item: any) {
+    // purchasedItems = purchasedItems.filter((value) => value.id !== item.id); ERRROOOR use items not purchaseditems
+    // const newItems = purchasedItems;
+    // console.log(purchasedItems);
+    // console.log(newItems);
+    // setItems(newItems);
+    console.log(item);
+    const newItems = items.filter((value) => value.id !== item.id);
+    setItems(newItems);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -15,7 +30,10 @@ export default function App() {
         <AddItemButton></AddItemButton>
       </View>
       <View style={styles.content}>
-        <PurchasedItemView purchasedItems={purchasedItems}></PurchasedItemView>
+        <PurchasedItemView
+          purchasedItems={items}
+          onPress={handleDeleteItem}
+        ></PurchasedItemView>
       </View>
     </SafeAreaView>
   );
