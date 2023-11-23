@@ -8,7 +8,7 @@ interface Props {
   purchasedItems: {
     id: number;
     itemName: string;
-    itemCost: string;
+    itemCost: number;
     purchaseDate: string;
   }[];
 }
@@ -26,7 +26,7 @@ function PurchasedItemView({ purchasedItems, onPress }: Props) {
         renderItem={({ item }) => (
           <ListItem
             itemName={item.itemName}
-            itemCost={item.itemCost}
+            itemCost={item.itemCost.toString()}
             purchaseDate={item.purchaseDate}
             onPress={() => item}
             renderRightActions={() => (

@@ -38,7 +38,7 @@ function ListItem({
             <View style={styles.innerContainer}>
               <View style={styles.nameAndPrice_Container}>
                 <Text style={styles.itemName}>{itemName}</Text>
-                <Text style={styles.itemCost}>{itemCost}</Text>
+                <Text style={styles.itemCost}>${itemCost}</Text>
               </View>
 
               <View style={styles.date_Container}>

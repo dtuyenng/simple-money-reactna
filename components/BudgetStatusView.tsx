@@ -1,6 +1,23 @@
 import { StyleSheet, Image, Text, View } from "react-native";
 
-function BudgetStatusView() {
+interface Props {
+  purchasedItems: {
+    id: number;
+    itemName: string;
+    itemCost: number;
+    purchaseDate: string;
+  }[];
+}
+
+function BudgetStatusView({ purchasedItems }: Props) {
+  function TotalSpent(purchasedItems: any) {
+    let totalSpent = 0;
+    for (let key in purchasedItems) {
+      totalSpent += 100 * purchasedItems[key].itemCost;
+    }
+    return totalSpent / 100;
+  }
+
   return (
     <View style={styles.container}>
       <View>
@@ -11,7 +28,7 @@ function BudgetStatusView() {
       </View>
       <View style={styles.budgetDetails}>
         <Text style={styles.budgetStatus}>Budget Status</Text>
-        <Text style={styles.budgetSpent}>$759.23</Text>
+        <Text style={styles.budgetSpent}>${TotalSpent(purchasedItems)}</Text>
         <Text style={styles.budgetAvailable}>$1029.00 Available</Text>
         <Text style={styles.budgetLimit}>$2000 Limit</Text>
       </View>

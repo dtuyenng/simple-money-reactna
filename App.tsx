@@ -26,7 +26,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <BudgetStatusView></BudgetStatusView>
+        <BudgetStatusView purchasedItems={items}></BudgetStatusView>
         <AddItemButton></AddItemButton>
       </View>
       <View style={styles.content}>
