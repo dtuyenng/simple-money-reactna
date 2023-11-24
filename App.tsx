@@ -10,26 +10,29 @@ import purchasedItems from "./components/purchasedItems";
 import monthlyBudget from "./Budget";
 
 export default function App() {
-  const [items, setItems] = useState(monthlyBudget.expenses);
+  const [budget, setBudget] = useState(monthlyBudget);
 
   function handleDeleteItem(item: any) {
     // purchasedItems = purchasedItems.filter((value) => value.id !== item.id); ERRROOOR use items not purchaseditems
     // const newItems = purchasedItems;
     // setItems(newItems);
     console.log(item);
-    const newItems = items.filter((value) => value.id !== item.id);
-    setItems(newItems);
+    const updatedExpense = budget.expenses.filter(
+      (value) => value.id !== item.id
+    );
+    const updatedBudget = { ...budget, expenses: updatedExpense };
+    setBudget(updatedBudget);
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <BudgetStatusView purchasedItems={items}></BudgetStatusView>
+        <BudgetStatusView budget={budget}></BudgetStatusView>
         <AddItemButton></AddItemButton>
       </View>
       <View style={styles.content}>
         <PurchasedItemView
-          purchasedItems={items}
+          purchasedItems={budget.expenses}
           onPress={handleDeleteItem}
         ></PurchasedItemView>
       </View>

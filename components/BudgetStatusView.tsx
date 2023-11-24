@@ -1,21 +1,28 @@
 import { StyleSheet, Image, Text, View } from "react-native";
 
 interface Props {
-  purchasedItems: {
-    id: number;
-    name: string;
-    amount: number;
-    date: Date;
-  }[];
+  budget: {
+    totalBudget: number;
+    expenses: Expense[];
+  };
+}
+interface Expense {
+  id: number;
+  name: string;
+  amount: number;
+  date: Date;
 }
 
-function BudgetStatusView({ purchasedItems }: Props) {
-  function TotalSpent(purchasedItems: any) {
+function BudgetStatusView({ budget }: Props) {
+  function TotalSpent(budget: { expenses: Expense[] }) {
     let totalSpent = 0;
-    for (let key in purchasedItems) {
-      totalSpent += 100 * purchasedItems[key].itemCost;
+    for (let expense of budget.expenses) {
+      totalSpent += 100 * expense.amount;
     }
     return totalSpent / 100;
+  }
+  function Available(budget: { totalBudget: number; expenses: Expense[] }) {
+    return budget.totalBudget - TotalSpent(budget);
   }
 
   return (
@@ -28,9 +35,11 @@ function BudgetStatusView({ purchasedItems }: Props) {
       </View>
       <View style={styles.budgetDetails}>
         <Text style={styles.budgetStatus}>Budget Status</Text>
-        <Text style={styles.budgetSpent}>${TotalSpent(purchasedItems)}</Text>
-        <Text style={styles.budgetAvailable}>$1029.00 Available</Text>
-        <Text style={styles.budgetLimit}>$2000 Limit</Text>
+        <Text style={styles.budgetSpent}>${TotalSpent(budget)}</Text>
+        <Text style={styles.budgetAvailable}>
+          ${Available(budget)} Available
+        </Text>
+        <Text style={styles.budgetLimit}>${budget.totalBudget} Limit</Text>
       </View>
     </View>
   );
