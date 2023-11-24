@@ -3,9 +3,9 @@ import { StyleSheet, Image, Text, View } from "react-native";
 interface Props {
   purchasedItems: {
     id: number;
-    itemName: string;
-    itemCost: number;
-    purchaseDate: string;
+    name: string;
+    amount: number;
+    date: Date;
   }[];
 }
 

@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import ListItem from "./components/ListItem";
 import PurchasedItemView from "./components/PurchasedItemView";
@@ -7,16 +7,14 @@ import AddItemButton from "./components/AddItemButton";
 
 //main data import
 import purchasedItems from "./components/purchasedItems";
-import { useState } from "react";
+import monthlyBudget from "./Budget";
 
 export default function App() {
-  const [items, setItems] = useState(purchasedItems);
+  const [items, setItems] = useState(monthlyBudget.expenses);
 
   function handleDeleteItem(item: any) {
     // purchasedItems = purchasedItems.filter((value) => value.id !== item.id); ERRROOOR use items not purchaseditems
     // const newItems = purchasedItems;
-    // console.log(purchasedItems);
-    // console.log(newItems);
     // setItems(newItems);
     console.log(item);
     const newItems = items.filter((value) => value.id !== item.id);
