@@ -1,15 +1,24 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Modal,
+  Button,
+} from "react-native";
 import ListItem from "./components/ListItem";
 import PurchasedItemView from "./components/PurchasedItemView";
 import BudgetStatusView from "./components/BudgetStatusView";
 import AddItemButton from "./components/AddItemButton";
+import { AnimationEvent } from "react";
 
 //main data import
 import purchasedItems from "./components/purchasedItems";
 import monthlyBudget from "./Budget";
 
 export default function App() {
+  const [modalVisible, setModalVisible] = useState(false);
   const [budget, setBudget] = useState(monthlyBudget);
 
   function handleDeleteItem(item: any) {
@@ -25,18 +34,25 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <BudgetStatusView budget={budget}></BudgetStatusView>
-        <AddItemButton></AddItemButton>
-      </View>
-      <View style={styles.content}>
-        <PurchasedItemView
-          purchasedItems={budget.expenses}
-          onPress={handleDeleteItem}
-        ></PurchasedItemView>
-      </View>
-    </SafeAreaView>
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <BudgetStatusView budget={budget}></BudgetStatusView>
+          <AddItemButton onPress={() => setModalVisible(true)} />
+        </View>
+        <View style={styles.content}>
+          <PurchasedItemView
+            purchasedItems={budget.expenses}
+            onPress={handleDeleteItem}
+          ></PurchasedItemView>
+        </View>
+        <Modal visible={modalVisible} animationType="slide">
+          <SafeAreaView>
+            <Button title="Cancel" onPress={() => setModalVisible(false)} />
+          </SafeAreaView>
+        </Modal>
+      </SafeAreaView>
+    </>
   );
 }
 

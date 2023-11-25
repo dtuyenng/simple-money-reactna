@@ -1,13 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { Modal } from "react-native";
 
-function AddItemButton() {
+interface Props {
+  onPress: () => void;
+}
+
+function AddItemButton({ onPress }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.buttonIcon}>+</Text>
-      <Text style={styles.buttonTitle}>Add Item</Text>
+      <Button title="Add Item" onPress={onPress} />
     </View>
   );
-}
+} //Change button component to a touchablewithoutfeedback
 
 const styles = StyleSheet.create({
   container: {
