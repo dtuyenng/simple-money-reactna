@@ -38,7 +38,10 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <BudgetStatusView budget={budget}></BudgetStatusView>
-          <AddItemButton onPress={() => setModalVisible(true)} />
+          <AddItemButton
+            title="Add Item"
+            onPress={() => setModalVisible(true)}
+          />
         </View>
         <View style={styles.content}>
           <PurchasedItemView
@@ -49,6 +52,7 @@ export default function App() {
         <Modal visible={modalVisible} animationType="slide">
           <SafeAreaView>
             <Button title="Cancel" onPress={() => setModalVisible(false)} />
+            <Text>PlaceHolder ADD ITEM FORM</Text>
           </SafeAreaView>
         </Modal>
       </SafeAreaView>

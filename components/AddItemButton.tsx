@@ -1,17 +1,29 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
 import { Modal } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 interface Props {
   onPress: () => void;
+  title: string;
 }
 
-function AddItemButton({ onPress }: Props) {
+function AddItemButton({ onPress, title }: Props) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.buttonIcon}>+</Text>
-      <Button title="Add Item" onPress={onPress} />
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <AntDesign name="plussquareo" size={45} color="orange" />
+        <Text style={styles.buttonTitle}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 } //Change button component to a touchablewithoutfeedback
 
@@ -35,7 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
   },
   buttonTitle: {
-    color: "dodgerblue",
+    color: "black",
     fontWeight: "bold",
   },
 });

@@ -27,7 +27,7 @@ function PurchasedItemView({ purchasedItems, onPress }: Props) {
           <ListItem
             itemName={item.name}
             itemCost={item.amount.toString()}
-            purchaseDate={item.date.toString()}
+            purchaseDate={item.date.toDateString()}
             onPress={() => item}
             renderRightActions={() => (
               <DeleteItemButton onPress={() => onPress(item)} />

@@ -33,7 +33,7 @@ function ListItem({
               style={styles.cartIcon}
               name="ios-cart-outline"
               size={15}
-              color="black"
+              color="orange"
             />
             <View style={styles.innerContainer}>
               <View style={styles.nameAndPrice_Container}>
