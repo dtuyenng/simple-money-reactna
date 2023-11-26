@@ -1,10 +1,11 @@
-import { StyleSheet, Image, Text, View } from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 
 interface Props {
   budget: {
     totalBudget: number;
     expenses: Expense[];
   };
+  onPress: () => void;
 }
 interface Expense {
   id: number;
@@ -13,7 +14,7 @@ interface Expense {
   date: Date;
 }
 
-function BudgetStatusView({ budget }: Props) {
+function BudgetStatusView({ budget, onPress }: Props) {
   function TotalSpent(budget: { expenses: Expense[] }) {
     let totalSpent = 0;
     for (let expense of budget.expenses) {
@@ -26,7 +27,7 @@ function BudgetStatusView({ budget }: Props) {
   }
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
         <Image
           style={styles.budgetIcon}
@@ -41,7 +42,7 @@ function BudgetStatusView({ budget }: Props) {
         </Text>
         <Text style={styles.budgetLimit}>${budget.totalBudget} Limit</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

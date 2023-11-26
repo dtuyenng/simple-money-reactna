@@ -18,7 +18,8 @@ import purchasedItems from "./components/purchasedItems";
 import monthlyBudget from "./Budget";
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalItemVisible, setModalItemVisible] = useState(false);
+  const [modalBudgetVisible, setModalBudgetVisible] = useState(false);
   const [budget, setBudget] = useState(monthlyBudget);
 
   function handleDeleteItem(item: any) {
@@ -37,10 +38,13 @@ export default function App() {
     <>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <BudgetStatusView budget={budget}></BudgetStatusView>
+          <BudgetStatusView
+            budget={budget}
+            onPress={() => setModalBudgetVisible(true)}
+          ></BudgetStatusView>
           <AddItemButton
             title="Add Item"
-            onPress={() => setModalVisible(true)}
+            onPress={() => setModalItemVisible(true)}
           />
         </View>
         <View style={styles.content}>
@@ -49,10 +53,44 @@ export default function App() {
             onPress={handleDeleteItem}
           ></PurchasedItemView>
         </View>
-        <Modal visible={modalVisible} animationType="slide">
+        <Modal visible={modalItemVisible} animationType="slide">
           <SafeAreaView>
-            <Button title="Cancel" onPress={() => setModalVisible(false)} />
             <Text>PlaceHolder ADD ITEM FORM</Text>
+            <Button title="Cancel" onPress={() => setModalItemVisible(false)} />
+          </SafeAreaView>
+        </Modal>
+
+        {/* ////////////// ADD option to close modal when user tap on background by wrapping background inside a touchable component
+        //// can calling */}
+
+        <Modal
+          visible={modalBudgetVisible}
+          onRequestClose={() => setModalBudgetVisible(false)}
+          animationType="slide"
+          transparent={true}
+        >
+          <SafeAreaView
+            style={{
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                width: "100%",
+                height: 500,
+                backgroundColor: "green",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Text>PlaceHolder Budget FORM</Text>
+              <Button
+                title="Cancel"
+                onPress={() => setModalBudgetVisible(false)}
+              />
+            </View>
           </SafeAreaView>
         </Modal>
       </SafeAreaView>
@@ -78,5 +116,11 @@ const styles = StyleSheet.create({
   content: {
     //backgroundColor: "yellow",
     flex: 1,
+  },
+  modalBudget: {
+    height: 200,
+    flex: 0.5,
+    backgroundColor: "green",
+    justifyContent: "flex-end",
   },
 });
