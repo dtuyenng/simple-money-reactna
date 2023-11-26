@@ -14,6 +14,7 @@ interface Props {
 }
 
 function AddItemModal({ modalItemVisible, setModalVisible }: Props) {
+  /// SHow Available MOney and SPent money in big letters so user knows the status implicitely
   return (
     <>
       <Modal

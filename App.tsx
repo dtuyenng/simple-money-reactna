@@ -66,6 +66,8 @@ export default function App() {
         <BudgetModal
           modalBudgetVisible={modalBudgetVisible}
           setModalVisible={() => setModalBudgetVisible(false)}
+          budgetName={budget.budgetName}
+          totalBudget={budget.totalBudget}
         ></BudgetModal>
       </SafeAreaView>
     </>

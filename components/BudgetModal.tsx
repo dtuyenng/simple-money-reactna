@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   SafeAreaView,
@@ -6,14 +6,24 @@ import {
   Text,
   Button,
   StyleSheet,
+  TextInput,
+  TextInputProps,
 } from "react-native";
+import AppTextInput from "./AppTextInput";
 
 interface Props {
   modalBudgetVisible: boolean;
   setModalVisible: () => void;
+  totalBudget: number;
+  budgetName: string;
 }
 
-function BudgetModal({ modalBudgetVisible, setModalVisible }: Props) {
+function BudgetModal({
+  modalBudgetVisible,
+  setModalVisible,
+  budgetName,
+  totalBudget,
+}: Props) {
   return (
     <>
       <Modal
@@ -24,8 +34,15 @@ function BudgetModal({ modalBudgetVisible, setModalVisible }: Props) {
       >
         <SafeAreaView style={styles.container}>
           <View style={styles.modal}>
-            <Text>PlaceHolder Budget FORM</Text>
-            <Button title="Cancel" onPress={setModalVisible} />
+            <AppTextInput inputLabel="Budget's Name" placeholder={budgetName} />
+            <AppTextInput
+              inputLabel="Budget Limit ($)"
+              placeholder={"$" + totalBudget.toString()}
+            />
+            <View style={styles.buttonContainer}>
+              <Button title="Save" onPress={setModalVisible} />
+              <Button title="Cancel" onPress={setModalVisible} />
+            </View>
           </View>
         </SafeAreaView>
       </Modal>
@@ -42,9 +59,17 @@ const styles = StyleSheet.create({
   modal: {
     width: "95%",
     height: "95%",
-    backgroundColor: "gray",
+    backgroundColor: "#f0f0f0",
     borderRadius: 20,
     padding: 10,
+    elevation: 20,
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
 });
 
