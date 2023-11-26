@@ -15,7 +15,8 @@ function DeleteItemButton({ onPress }: any) {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 5,
-    marginTop: 4,
+    marginTop: 6,
+    marginRight: 4,
     backgroundColor: "#FA8072",
     width: 45,
     height: 40,

@@ -12,9 +12,10 @@ import PurchasedItemView from "./components/PurchasedItemView";
 import BudgetStatusView from "./components/BudgetStatusView";
 import AddItemButton from "./components/AddItemButton";
 import { AnimationEvent } from "react";
+import BudgetModal from "./components/BudgetModal";
+import AddItemModal from "./components/AddItemModal";
 
 //main data import
-import purchasedItems from "./components/purchasedItems";
 import monthlyBudget from "./Budget";
 
 export default function App() {
@@ -53,46 +54,19 @@ export default function App() {
             onPress={handleDeleteItem}
           ></PurchasedItemView>
         </View>
-        <Modal visible={modalItemVisible} animationType="slide">
-          <SafeAreaView>
-            <Text>PlaceHolder ADD ITEM FORM</Text>
-            <Button title="Cancel" onPress={() => setModalItemVisible(false)} />
-          </SafeAreaView>
-        </Modal>
+
+        <AddItemModal
+          modalItemVisible={modalItemVisible}
+          setModalVisible={() => setModalItemVisible(false)}
+        ></AddItemModal>
 
         {/* ////////////// ADD option to close modal when user tap on background by wrapping background inside a touchable component
         //// can calling */}
 
-        <Modal
-          visible={modalBudgetVisible}
-          onRequestClose={() => setModalBudgetVisible(false)}
-          animationType="slide"
-          transparent={true}
-        >
-          <SafeAreaView
-            style={{
-              flex: 1,
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{
-                width: "100%",
-                height: 500,
-                backgroundColor: "green",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Text>PlaceHolder Budget FORM</Text>
-              <Button
-                title="Cancel"
-                onPress={() => setModalBudgetVisible(false)}
-              />
-            </View>
-          </SafeAreaView>
-        </Modal>
+        <BudgetModal
+          modalBudgetVisible={modalBudgetVisible}
+          setModalVisible={() => setModalBudgetVisible(false)}
+        ></BudgetModal>
       </SafeAreaView>
     </>
   );

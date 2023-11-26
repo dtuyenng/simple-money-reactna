@@ -6,11 +6,13 @@ interface Expense {
 }
 
 interface Budget {
+  id: number;
   totalBudget: number;
   expenses: Expense[];
 }
 
 let monthlyBudget: Budget = {
+  id: 1,
   totalBudget: 5000,
   expenses: [
     { id: 1, name: "Warhammer", amount: 199.99, date: new Date("2023-11-24") },
