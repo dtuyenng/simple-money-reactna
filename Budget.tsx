@@ -25,6 +25,12 @@ let monthlyBudget: Budget = {
     { id: 6, name: "Toys", amount: 3.5, date: new Date("2023-11-24") },
     { id: 7, name: "Gas", amount: 23.2, date: new Date("2023-11-24") },
     { id: 8, name: "Drinks", amount: 13.5, date: new Date("2023-11-24") },
+    { id: 9, name: "Drinks", amount: 13.5, date: new Date("2023-11-24") },
+    { id: 10, name: "Toys", amount: 3.5, date: new Date("2023-11-24") },
+    { id: 11, name: "Gas", amount: 23.2, date: new Date("2023-11-24") },
+    { id: 12, name: "Drinks", amount: 13.5, date: new Date("2023-11-24") },
+    { id: 13, name: "Drinks", amount: 13.5, date: new Date("2023-11-24") },
+    { id: 14, name: "Stuff", amount: 13.5, date: new Date("2023-11-24") },
   ],
 };
 

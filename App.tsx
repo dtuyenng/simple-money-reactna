@@ -59,16 +59,18 @@ export default function App() {
           modalItemVisible={modalItemVisible}
           setModalVisible={() => setModalItemVisible(false)}
         ></AddItemModal>
-
-        {/* ////////////// ADD option to close modal when user tap on background by wrapping background inside a touchable component
-        //// can calling */}
-
-        <BudgetModal
-          modalBudgetVisible={modalBudgetVisible}
-          setModalVisible={() => setModalBudgetVisible(false)}
-          budgetName={budget.budgetName}
-          totalBudget={budget.totalBudget}
-        ></BudgetModal>
+        <View style={styles.modalBudget}>
+          <BudgetModal
+            modalBudgetVisible={modalBudgetVisible}
+            handleSave={() => {
+              setModalBudgetVisible(false);
+              console.log("test");
+            }}
+            handleCancel={() => setModalBudgetVisible(false)}
+            budgetName={budget.budgetName}
+            totalBudget={budget.totalBudget}
+          ></BudgetModal>
+        </View>
       </SafeAreaView>
     </>
   );
@@ -76,26 +78,26 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "column",
     backgroundColor: "#eeeeee",
     alignItems: "center",
+    justifyContent: "flex-start",
     paddingTop: 35,
+    flex: 1,
   },
   header: {
     //backgroundColor: "red",
-    flex: 0.17,
+
     flexDirection: "row",
     justifyContent: "space-around",
     width: 335,
   },
   content: {
     //backgroundColor: "yellow",
-    flex: 1,
   },
   modalBudget: {
-    height: 200,
-    flex: 0.5,
+    height: 400,
+    flex: 1,
     backgroundColor: "green",
     justifyContent: "flex-end",
   },

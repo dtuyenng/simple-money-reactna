@@ -11,16 +11,21 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 interface Props {
   icon?: any;
   inputLabel?: string;
-  placeholder?: string;
+  defaultValue?: string;
+  keyboardType?: any;
 }
-function AppTextInput({ icon, inputLabel, placeholder }: Props) {
+function AppTextInput({ icon, inputLabel, defaultValue, keyboardType }: Props) {
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.label}>{inputLabel}</Text>
         <View style={styles.innerContainer}>
           {icon && <MaterialCommunityIcons name={icon} />}
-          <TextInput style={styles.textInput} placeholder={placeholder} />
+          <TextInput
+            style={styles.textInput}
+            defaultValue={defaultValue}
+            keyboardType={keyboardType}
+          />
         </View>
       </View>
     </>
@@ -34,14 +39,17 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: "column",
     justifyContent: "flex-start",
-    height: 150,
+    backgroundColor: "yellow",
+
+    height: 80,
     width: "100%",
   },
   innerContainer: {
-    borderRadius: 20,
+    borderRadius: 10,
     flexDirection: "row",
     borderWidth: 0,
-    backgroundColor: "white",
+    backgroundColor: "red",
+
     fontSize: 50,
     elevation: 10,
     shadowColor: "black",
@@ -50,7 +58,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: "100%",
-    fontSize: 50,
+    fontSize: 20,
     padding: 5,
     textAlign: "center",
   },

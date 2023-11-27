@@ -13,14 +13,16 @@ import AppTextInput from "./AppTextInput";
 
 interface Props {
   modalBudgetVisible: boolean;
-  setModalVisible: () => void;
+  handleSave: () => void;
+  handleCancel: () => void;
   totalBudget: number;
   budgetName: string;
 }
 
 function BudgetModal({
   modalBudgetVisible,
-  setModalVisible,
+  handleSave,
+  handleCancel,
   budgetName,
   totalBudget,
 }: Props) {
@@ -28,20 +30,23 @@ function BudgetModal({
     <>
       <Modal
         visible={modalBudgetVisible}
-        onRequestClose={setModalVisible}
         animationType="slide"
         transparent={false}
       >
         <SafeAreaView style={styles.container}>
-          <View style={styles.modal}>
-            <AppTextInput inputLabel="Budget's Name" placeholder={budgetName} />
+          <View style={styles.innerContainer}>
+            <AppTextInput
+              inputLabel="Budget's Name"
+              defaultValue={budgetName}
+            />
             <AppTextInput
               inputLabel="Budget Limit ($)"
-              placeholder={"$" + totalBudget.toString()}
+              defaultValue={"$" + totalBudget.toString()}
+              keyboardType="numeric"
             />
             <View style={styles.buttonContainer}>
-              <Button title="Save" onPress={setModalVisible} />
-              <Button title="Cancel" onPress={setModalVisible} />
+              <Button title="Save" onPress={handleSave} />
+              <Button title="Cancel" onPress={handleCancel} />
             </View>
           </View>
         </SafeAreaView>
@@ -51,15 +56,15 @@ function BudgetModal({
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.7,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
-  modal: {
+  innerContainer: {
     width: "95%",
     height: "95%",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#green",
     borderRadius: 20,
     padding: 10,
     elevation: 20,
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
   },
 });
 
