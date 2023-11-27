@@ -35,6 +35,12 @@ export default function App() {
     setBudget(updatedBudget);
   }
 
+  function handleBudgetLimitSave(value: number) {
+    const updatedBudget = { ...budget, totalBudget: value };
+    setBudget(updatedBudget);
+    setModalBudgetVisible(false);
+  }
+
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -62,10 +68,7 @@ export default function App() {
         <View style={styles.modalBudget}>
           <BudgetModal
             modalBudgetVisible={modalBudgetVisible}
-            handleSave={() => {
-              setModalBudgetVisible(false);
-              console.log("test");
-            }}
+            handleBudgetLimitSave={handleBudgetLimitSave}
             handleCancel={() => setModalBudgetVisible(false)}
             budgetName={budget.budgetName}
             totalBudget={budget.totalBudget}

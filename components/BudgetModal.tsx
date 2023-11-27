@@ -13,7 +13,7 @@ import AppTextInput from "./AppTextInput";
 
 interface Props {
   modalBudgetVisible: boolean;
-  handleSave: () => void;
+  handleBudgetLimitSave: (value: number) => void;
   handleCancel: () => void;
   totalBudget: number;
   budgetName: string;
@@ -21,11 +21,12 @@ interface Props {
 
 function BudgetModal({
   modalBudgetVisible,
-  handleSave,
+  handleBudgetLimitSave,
   handleCancel,
   budgetName,
   totalBudget,
 }: Props) {
+  const [budgetLimit, setBudgetLimit] = useState(totalBudget);
   return (
     <>
       <Modal
@@ -35,17 +36,17 @@ function BudgetModal({
       >
         <SafeAreaView style={styles.container}>
           <View style={styles.innerContainer}>
-            <AppTextInput
-              inputLabel="Budget's Name"
-              defaultValue={budgetName}
-            />
-            <AppTextInput
-              inputLabel="Budget Limit ($)"
-              defaultValue={"$" + totalBudget.toString()}
+            <Text>{budgetLimit}</Text>
+            <TextInput
+              defaultValue={budgetLimit.toString()}
               keyboardType="numeric"
-            />
+              onChangeText={(value) => setBudgetLimit(Number(value))}
+            ></TextInput>
             <View style={styles.buttonContainer}>
-              <Button title="Save" onPress={handleSave} />
+              <Button
+                title="Save"
+                onPress={() => handleBudgetLimitSave(budgetLimit)}
+              />
               <Button title="Cancel" onPress={handleCancel} />
             </View>
           </View>

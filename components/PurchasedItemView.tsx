@@ -41,7 +41,7 @@ function PurchasedItemView({ purchasedItems, onPress }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white  ",
+    backgroundColor: "white",
     // borderTopLeftRadius: 20,
     // borderTopRightRadius: 20,
     borderRadius: 20,
