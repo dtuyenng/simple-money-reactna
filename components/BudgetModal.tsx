@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AppInput from "./AppInput";
 import {
   Modal,
   SafeAreaView,
@@ -8,40 +9,51 @@ import {
   StyleSheet,
   TextInput,
   TextInputProps,
+  KeyboardAvoidingView,
 } from "react-native";
-import AppTextInput from "./AppTextInput";
 
 interface Props {
   modalBudgetVisible: boolean;
   handleBudgetLimitSave: (value: number) => void;
   handleCancel: () => void;
   totalBudget: number;
-  budgetName: string;
+  currBudgetName: string;
 }
 
 function BudgetModal({
   modalBudgetVisible,
   handleBudgetLimitSave,
   handleCancel,
-  budgetName,
+  currBudgetName,
   totalBudget,
 }: Props) {
   const [budgetLimit, setBudgetLimit] = useState(totalBudget);
+  const [budgetName, setBudgetName] = useState(currBudgetName);
   return (
     <>
       <Modal
         visible={modalBudgetVisible}
         animationType="slide"
-        transparent={false}
+        transparent={true}
       >
-        <SafeAreaView style={styles.container}>
-          <View style={styles.innerContainer}>
-            <Text>{budgetLimit}</Text>
-            <TextInput
-              defaultValue={budgetLimit.toString()}
-              keyboardType="numeric"
+        <KeyboardAvoidingView style={styles.container} behavior="height">
+          <View style={styles.content}>
+            <Text style={styles.title}>Budget Status</Text>
+
+            <AppInput
+              label="Budget Name"
+              icon="reorder-four-outline"
+              defaultValue={budgetName}
               onChangeText={(value) => setBudgetLimit(Number(value))}
-            ></TextInput>
+            />
+
+            <AppInput
+              label="Budget Limit"
+              icon="cash-outline"
+              keyboardType="numeric"
+              defaultValue={budgetLimit.toString()}
+              onChangeText={(value) => setBudgetLimit(Number(value))}
+            />
             <View style={styles.buttonContainer}>
               <Button
                 title="Save"
@@ -50,22 +62,23 @@ function BudgetModal({
               <Button title="Cancel" onPress={handleCancel} />
             </View>
           </View>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
       </Modal>
     </>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 0.7,
-    flexDirection: "column",
-    justifyContent: "center",
+    flex: 1,
+    flexDirection: "column-reverse",
+    justifyContent: "flex-start",
     alignItems: "center",
+    // backgroundColor: "blue",
   },
-  innerContainer: {
+  content: {
     width: "95%",
-    height: "95%",
-    backgroundColor: "#green",
+    height: 400,
+    backgroundColor: "#F5F5F5",
     borderRadius: 20,
     padding: 10,
     elevation: 20,
@@ -75,7 +88,20 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    //backgroundColor: "red",
+    borderTopWidth: 2,
+    borderTopColor: "#eeeeee",
+    marginTop: 10,
+    paddingTop: 10,
+  },
+  title: {
+    color: "dodgerblue",
+    fontWeight: "bold",
+    fontSize: 25,
+    marginBottom: 10,
+    marginTop: 10,
+    textAlign: "center",
   },
 });
 

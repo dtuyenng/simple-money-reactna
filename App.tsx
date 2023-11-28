@@ -64,13 +64,14 @@ export default function App() {
         <AddItemModal
           modalItemVisible={modalItemVisible}
           setModalVisible={() => setModalItemVisible(false)}
+          handleCancel={() => setModalItemVisible(false)}
         ></AddItemModal>
-        <View style={styles.modalBudget}>
+        <View>
           <BudgetModal
             modalBudgetVisible={modalBudgetVisible}
             handleBudgetLimitSave={handleBudgetLimitSave}
             handleCancel={() => setModalBudgetVisible(false)}
-            budgetName={budget.budgetName}
+            currBudgetName={budget.budgetName}
             totalBudget={budget.totalBudget}
           ></BudgetModal>
         </View>
@@ -97,11 +98,5 @@ const styles = StyleSheet.create({
   },
   content: {
     //backgroundColor: "yellow",
-  },
-  modalBudget: {
-    height: 400,
-    flex: 1,
-    backgroundColor: "green",
-    justifyContent: "flex-end",
   },
 });

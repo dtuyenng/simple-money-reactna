@@ -1,4 +1,6 @@
 import React from "react";
+import AppInput from "./AppInput";
+import { Ionicons } from "@expo/vector-icons";
 import {
   Modal,
   SafeAreaView,
@@ -6,14 +8,20 @@ import {
   Text,
   Button,
   StyleSheet,
+  KeyboardAvoidingView,
 } from "react-native";
 
 interface Props {
   modalItemVisible: boolean;
   setModalVisible: () => void;
+  handleCancel: () => void;
 }
 
-function AddItemModal({ modalItemVisible, setModalVisible }: Props) {
+function AddItemModal({
+  modalItemVisible,
+  setModalVisible,
+  handleCancel,
+}: Props) {
   /// SHow Available MOney and SPent money in big letters so user knows the status implicitely
   return (
     <>
@@ -21,14 +29,23 @@ function AddItemModal({ modalItemVisible, setModalVisible }: Props) {
         visible={modalItemVisible}
         onRequestClose={setModalVisible}
         animationType="slide"
-        transparent={false}
+        transparent={true}
       >
-        <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="height">
           <View style={styles.modal}>
-            <Text>PlaceHolder AddItem FORM</Text>
-            <Button title="Cancel" onPress={setModalVisible} />
+            <AppInput
+              label="Hi"
+              icon="ios-cart-outline"
+              placeholder="Hi"
+              keyboardType="numeric"
+            ></AppInput>
+
+            <View style={styles.buttonContainer}>
+              <Button title="Save" onPress={() => console.log("")} />
+              <Button title="Cancel" onPress={handleCancel} />
+            </View>
           </View>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
       </Modal>
     </>
   );
@@ -37,16 +54,28 @@ function AddItemModal({ modalItemVisible, setModalVisible }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: "column-reverse",
+    justifyContent: "flex-start",
     alignItems: "center",
+    // backgroundColor: "blue",
   },
   modal: {
     width: "95%",
-    height: "95%",
-    backgroundColor: "gray",
+    height: 400,
+    backgroundColor: "white",
     borderRadius: 20,
     padding: 10,
+    elevation: 20,
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.5,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    //backgroundColor: "red",
+    borderTopWidth: 2,
+    borderTopColor: "#eeeeee",
   },
 });
 
