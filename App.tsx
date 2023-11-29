@@ -40,6 +40,18 @@ export default function App() {
     setBudget(updatedBudget);
     setModalBudgetVisible(false);
   }
+  function handleSaveItem(itemPrice: string, itemDesc: string) {
+    const newItem = {
+      id: 69,
+      name: itemDesc,
+      amount: Number(itemPrice),
+      date: new Date("2023-11-24"),
+    };
+    const updatedBudget = budget;
+    updatedBudget.expenses.push(newItem);
+    setBudget(updatedBudget);
+    setModalItemVisible(false);
+  }
 
   return (
     <>
@@ -65,6 +77,7 @@ export default function App() {
           modalItemVisible={modalItemVisible}
           setModalVisible={() => setModalItemVisible(false)}
           handleCancel={() => setModalItemVisible(false)}
+          handleSaveItem={handleSaveItem}
         ></AddItemModal>
         <View>
           <BudgetModal

@@ -15,6 +15,7 @@ import {
 interface Props {
   modalBudgetVisible: boolean;
   handleBudgetLimitSave: (value: number) => void;
+  handleBudgetNameSave: (value: string) => void;
   handleCancel: () => void;
   totalBudget: number;
   currBudgetName: string;
@@ -23,6 +24,7 @@ interface Props {
 function BudgetModal({
   modalBudgetVisible,
   handleBudgetLimitSave,
+  handleBudgetNameSave,
   handleCancel,
   currBudgetName,
   totalBudget,
@@ -38,13 +40,13 @@ function BudgetModal({
       >
         <KeyboardAvoidingView style={styles.container} behavior="height">
           <View style={styles.content}>
-            <Text style={styles.title}>Budget Status</Text>
+            <Text style={styles.title}>{currBudgetName}</Text>
 
             <AppInput
               label="Budget Name"
               icon="reorder-four-outline"
               defaultValue={budgetName}
-              onChangeText={(value) => setBudgetLimit(Number(value))}
+              onChangeText={(value) => setBudgetName(value)}
             />
 
             <AppInput
@@ -57,7 +59,10 @@ function BudgetModal({
             <View style={styles.buttonContainer}>
               <Button
                 title="Save"
-                onPress={() => handleBudgetLimitSave(budgetLimit)}
+                onPress={() => {
+                  handleBudgetLimitSave(budgetLimit);
+                  handleBudgetNameSave(budgetName);
+                }}
               />
               <Button title="Cancel" onPress={handleCancel} />
             </View>

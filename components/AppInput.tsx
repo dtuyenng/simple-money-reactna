@@ -12,7 +12,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 interface Props extends TextInputProps {
   label: string;
-  icon: any;
+  icon?: any;
 }
 
 function AppInput({ label, icon, ...otherProps }: Props) {
