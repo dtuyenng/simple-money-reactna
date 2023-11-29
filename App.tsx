@@ -19,27 +19,27 @@ import AddItemModal from "./components/AddItemModal";
 import monthlyBudget from "./Budget";
 
 export default function App() {
+  const [budget, setBudget] = useState(monthlyBudget);
   const [modalItemVisible, setModalItemVisible] = useState(false);
   const [modalBudgetVisible, setModalBudgetVisible] = useState(false);
-  const [budget, setBudget] = useState(monthlyBudget);
 
   function handleDeleteItem(item: any) {
-    // purchasedItems = purchasedItems.filter((value) => value.id !== item.id); ERRROOOR use items not purchaseditems
-    // const newItems = purchasedItems;
-    // setItems(newItems);
-    console.log(item);
     const updatedExpense = budget.expenses.filter(
       (value) => value.id !== item.id
     );
     const updatedBudget = { ...budget, expenses: updatedExpense };
     setBudget(updatedBudget);
   }
-
-  function handleBudgetLimitSave(value: number) {
-    const updatedBudget = { ...budget, totalBudget: value };
+  function handleUpdateBudget(newbudgetName: string, newbudgetLimit: number) {
+    const updatedBudget = {
+      ...budget,
+      budgetName: newbudgetName,
+      totalBudget: newbudgetLimit,
+    };
     setBudget(updatedBudget);
     setModalBudgetVisible(false);
   }
+
   function handleSaveItem(itemPrice: string, itemDesc: string) {
     const newItem = {
       id: 69,
@@ -81,11 +81,11 @@ export default function App() {
         ></AddItemModal>
         <View>
           <BudgetModal
-            modalBudgetVisible={modalBudgetVisible}
-            handleBudgetLimitSave={handleBudgetLimitSave}
-            handleCancel={() => setModalBudgetVisible(false)}
             currBudgetName={budget.budgetName}
             totalBudget={budget.totalBudget}
+            modalBudgetVisible={modalBudgetVisible}
+            handleUpdateBudget={handleUpdateBudget}
+            handleCancel={() => setModalBudgetVisible(false)}
           ></BudgetModal>
         </View>
       </SafeAreaView>

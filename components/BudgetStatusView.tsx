@@ -3,6 +3,7 @@ import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 interface Props {
   budget: {
     totalBudget: number;
+    budgetName: string;
     expenses: Expense[];
   };
   onPress: () => void;
@@ -35,7 +36,7 @@ function BudgetStatusView({ budget, onPress }: Props) {
         />
       </View>
       <View style={styles.budgetDetails}>
-        <Text style={styles.budgetStatus}>Budget Status</Text>
+        <Text style={styles.budgetStatus}>{budget.budgetName}</Text>
         <Text style={styles.budgetSpent}>${TotalSpent(budget)}</Text>
         <Text style={styles.budgetAvailable}>
           ${Available(budget)} Available

@@ -38,9 +38,7 @@ function AddItemModal({
       >
         <KeyboardAvoidingView style={styles.container} behavior="height">
           <View style={styles.content}>
-            <Text style={styles.title}>
-              Add Item{itemPrice} {itemDesc}
-            </Text>
+            <Text style={styles.title}>Add Item</Text>
 
             <AppInput
               style={styles.itemPrice}

@@ -14,8 +14,9 @@ import {
 
 interface Props {
   modalBudgetVisible: boolean;
-  handleBudgetLimitSave: (value: number) => void;
-  handleBudgetNameSave: (value: string) => void;
+  // handleBudgetLimitSave: (value: number) => void;
+  // handleBudgetNameSave: (value: string) => void;
+  handleUpdateBudget: (budgetName: string, budgetLimit: number) => void;
   handleCancel: () => void;
   totalBudget: number;
   currBudgetName: string;
@@ -23,8 +24,7 @@ interface Props {
 
 function BudgetModal({
   modalBudgetVisible,
-  handleBudgetLimitSave,
-  handleBudgetNameSave,
+  handleUpdateBudget,
   handleCancel,
   currBudgetName,
   totalBudget,
@@ -60,8 +60,7 @@ function BudgetModal({
               <Button
                 title="Save"
                 onPress={() => {
-                  handleBudgetLimitSave(budgetLimit);
-                  handleBudgetNameSave(budgetName);
+                  handleUpdateBudget(budgetName, budgetLimit);
                 }}
               />
               <Button title="Cancel" onPress={handleCancel} />
